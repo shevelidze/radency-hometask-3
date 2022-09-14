@@ -8,11 +8,12 @@ import getStatistics from '../services/getStatistics';
 
 const notesRouter = Router();
 
+notesRouter.get('/', getNotes);
+notesRouter.get('/stats', getStatistics);
+
 notesRouter.post('/', parseJSON, createNote);
 notesRouter.delete('/:id', deleteNote);
 notesRouter.patch('/:id', parseJSON, editNote);
-notesRouter.get('/', getNotes);
 notesRouter.get('/:id', getNote);
-notesRouter.get('/stats', getStatistics);
 
 export default notesRouter;
