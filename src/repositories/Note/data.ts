@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import Category from '../Category';
 
 export interface NoteData {
@@ -14,7 +13,7 @@ export const notesData: NoteData[] = [];
 
 notesData.push(
   {
-    id: crypto.randomUUID(),
+    id: '1',
     name: 'Shopping',
     categoryId: 'task',
     content: 'Go shopping on 02/03/2022 or 05.03.2022.',
@@ -22,7 +21,7 @@ notesData.push(
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '2',
     name: 'Dantist appointment',
     categoryId: 'task',
     content: `I’m gonna have a dentist appointment on the 3/5/2021,
@@ -31,7 +30,7 @@ I moved it from 5/5/2021`,
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '3',
     name: 'Note #3',
     content: 'Content of the note #2',
     categoryId: 'thought',
@@ -39,7 +38,7 @@ I moved it from 5/5/2021`,
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '4',
     name: 'Note #4',
     content: 'Content of the note #4',
     categoryId: 'idea',
@@ -47,7 +46,7 @@ I moved it from 5/5/2021`,
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '5',
     name: 'Note #5',
     content: 'Content of the note #5',
     categoryId: 'task',
@@ -55,7 +54,7 @@ I moved it from 5/5/2021`,
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '6',
     name: 'Note #6',
     content: 'Content of the note #6',
     categoryId: 'thought',
@@ -63,7 +62,7 @@ I moved it from 5/5/2021`,
     creationDate: new Date(),
   },
   {
-    id: crypto.randomUUID(),
+    id: '7',
     name: 'Note #7',
     content: 'Content of the note #7',
     categoryId: 'idea',

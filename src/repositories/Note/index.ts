@@ -36,7 +36,7 @@ export default class Note implements NoteData {
       this.name = args[0];
       this.content = args[1];
       this.categoryId = args[2];
-      this.isArchived = false;
+      this.isArchived = false; 
     } else if (args.length === 5) {
       this.name = args[0];
       this.content = args[1];
@@ -54,6 +54,8 @@ export default class Note implements NoteData {
   }
 
   public save() {
+    new Category(this.categoryId); // to check if the categoryId is valid
+
     if (this.noteData === undefined) {
       notesData.push({
         id: crypto.randomUUID(),

@@ -12,7 +12,7 @@ categoriesData.push(
   },
   {
     id: 'thought',
-    name: 'RandomThought',
+    name: 'Random Thought',
   },
   {
     id: 'idea',
