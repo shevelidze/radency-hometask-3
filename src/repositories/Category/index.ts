@@ -10,6 +10,9 @@ export default class Category implements CategoryData {
   public constructor(id: CategoryData['id']);
   public constructor(id: CategoryData['id'], name: CategoryData['name']);
   public constructor(...args: any[]) {
+    this.id = '';
+    this.name = '';
+
     if (args.length === 2) {
       this.id = args[0];
       this.name = args[1];

@@ -32,11 +32,16 @@ export default class Note implements NoteData {
   );
   public constructor(noteData: NoteData);
   public constructor(...args: any[]) {
+    this.name = '';
+    this.content = '';
+    this.categoryId = '';
+    this.noteData = null;
+    this.isArchived = false;
+
     if (args.length === 3) {
       this.name = args[0];
       this.content = args[1];
       this.categoryId = args[2];
-      this.isArchived = false; 
     } else if (args.length === 5) {
       this.name = args[0];
       this.content = args[1];
@@ -56,26 +61,30 @@ export default class Note implements NoteData {
   public save() {
     new Category(this.categoryId); // to check if the categoryId is valid
 
-    if (this.noteData === undefined) {
-      notesData.push({
+    if (this.noteData === null) {
+      this.noteData = {
         id: crypto.randomUUID(),
         name: this.name,
         content: this.content,
         categoryId: this.categoryId,
         creationDate: new Date(),
         isArchived: false,
-      });
-      this.noteData = notesData.at(-1);
+      };
+      notesData.push(this.noteData);
     } else {
       this.assignProperties(this.noteData, this);
     }
   }
   public delete() {
-    notesData.splice(notesData.indexOf(this.noteData), 1);
-    this.noteData = undefined;
+    if (this.noteData !== null) {
+      notesData.splice(notesData.indexOf(this.noteData), 1);
+      this.noteData = null;
+    }
   }
 
-  public get id(): string | undefined {
+  public get id(): string {
+    if (this.noteData === null)
+      throw new Error('Unable to get the id of a not saved note');
     return this.noteData?.id;
   }
   public name: NoteData['name'];
@@ -83,6 +92,8 @@ export default class Note implements NoteData {
   public isArchived: NoteData['isArchived'];
   public categoryId: NoteData['categoryId'];
   public get creationDate() {
+    if (this.noteData === null)
+      throw new Error('Unable to get the creation date of a not saved note');
     return this.noteData.creationDate;
   }
   public get category() {

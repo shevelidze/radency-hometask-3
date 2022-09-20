@@ -14,9 +14,7 @@ const editNote: RequestHandler = (req, res) => {
   try {
     const note = new Note(req.params.id);
 
-    for (const editionKey in req.body) {
-      note[editionKey] = req.body[editionKey];
-    }
+    Object.assign(note, req.body);
 
     note.save();
   } catch (e) {
