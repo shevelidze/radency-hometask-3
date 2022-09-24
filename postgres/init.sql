@@ -8,6 +8,7 @@ CREATE TABLE notes (
     name TEXT NOT NULL,
     content TEXT NOT NULL,
     is_archived BOOLEAN NOT NULL DEFAULT FALSE,
-    category_id INT REFERENCES categories(id) ON DELETE CASCADE
+    category_id INT REFERENCES categories(id) ON DELETE CASCADE,
+    created_at TIMESTAMPTZ DEFAULT current_timestamp
 );
 
