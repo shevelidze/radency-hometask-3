@@ -1,10 +1,12 @@
-import {
-  Model,
-  DataTypes,
-  type InferAttributes,
-  type InferCreationAttributes,
+import { Model, DataTypes } from 'sequelize';
+
+import type {
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
 } from 'sequelize';
 import sequelize from '../configs/sequelize';
+import Note from './Note';
 
 export default class Category extends Model<
   InferAttributes<Category>,
@@ -12,6 +14,7 @@ export default class Category extends Model<
 > {
   declare id: number;
   declare name: string;
+  declare notes: NonAttribute<Note[]>;
 }
 
 Category.init(
