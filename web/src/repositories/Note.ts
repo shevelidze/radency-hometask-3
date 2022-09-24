@@ -50,4 +50,5 @@ Note.init(
   }
 );
 
+Category.hasMany(Note);
 Note.belongsTo(Category);
