@@ -1,11 +1,11 @@
 import { RequestHandler } from 'express';
 import Note from '../repositories/Note';
 
-const getNotes: RequestHandler = (req, res) => {
+const getNotes: RequestHandler = async (req, res) => {
   res.json({
-    notes: Note.getAll().map((note) => ({
-      id: note.id,
-    })),
+    notes: await Note.findAll({
+      attributes: ['id', 'name'],
+    }),
   });
 };
 
