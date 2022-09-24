@@ -1,12 +1,23 @@
 import { RequestHandler } from 'express';
 import { AnyObjectSchema, ValidationError } from 'yup';
 
-export default function generateValidationMiddleware(
-  bodySchema: AnyObjectSchema
-): RequestHandler {
+export default function generateValidationMiddleware({
+  bodySchema,
+  paramsSchema,
+}: {
+  bodySchema?: AnyObjectSchema;
+  paramsSchema?: AnyObjectSchema;
+}): RequestHandler {
   return (req, res, next) => {
     try {
-      req.body = bodySchema.validateSync(req.body, { stripUnknown: false });
+      if (bodySchema !== undefined)
+        req.body = bodySchema.validateSync(req.body, { stripUnknown: false });
+
+      if (paramsSchema !== undefined)
+        req.body = paramsSchema.validateSync(req.params, {
+          stripUnknown: false,
+        });
+
       next();
     } catch (e) {
       if (e instanceof ValidationError)

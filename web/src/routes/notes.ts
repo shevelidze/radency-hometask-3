@@ -3,7 +3,7 @@ import createNote, { notesCreationBodySchema } from '../services/createNote';
 import deleteNote from '../services/deleteNote';
 import editNote, { notesEditionBodySchema } from '../services/editNote';
 import getNotes from '../services/getNotes';
-import getNote from '../services/getNote';
+import getNote, { getNoteParamsSchema } from '../services/getNote';
 import getStatistics from '../services/getStatistics';
 import generateValidationMiddleware from '../services/validationMiddleware';
 
@@ -15,16 +15,20 @@ notesRouter.get('/stats', getStatistics);
 notesRouter.post(
   '/',
   json(),
-  generateValidationMiddleware(notesCreationBodySchema),
+  generateValidationMiddleware({ bodySchema: notesCreationBodySchema }),
   createNote
 );
 notesRouter.delete('/:id', deleteNote);
 notesRouter.patch(
   '/:id',
   json(),
-  generateValidationMiddleware(notesEditionBodySchema),
+  generateValidationMiddleware({ bodySchema: notesEditionBodySchema }),
   editNote
 );
-notesRouter.get('/:id', getNote);
+notesRouter.get(
+  '/:id',
+  generateValidationMiddleware({ paramsSchema: getNoteParamsSchema }),
+  getNote
+);
 
 export default notesRouter;
