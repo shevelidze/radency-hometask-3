@@ -1,14 +1,24 @@
 import { Model, DataTypes } from 'sequelize';
+import type {
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+  NonAttribute,
+  ForeignKey,
+} from 'sequelize';
 import sequelize from '../configs/sequelize';
 import Category from './Category';
 
-export default class Note extends Model {
-  declare id: number;
+export default class Note extends Model<
+  InferAttributes<Note>,
+  InferCreationAttributes<Note>
+> {
+  declare id: CreationOptional<number>;
   declare name: string;
   declare content: string;
-  declare categoryId: number;
+  declare categoryId: ForeignKey<Category['id']>;
   declare isArchived: boolean;
-  declare createdAt: Date;
+  declare createdAt: NonAttribute<Date>;
 }
 
 Note.init(

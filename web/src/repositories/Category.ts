@@ -1,7 +1,15 @@
-import { Model, DataTypes } from 'sequelize';
+import {
+  Model,
+  DataTypes,
+  type InferAttributes,
+  type InferCreationAttributes,
+} from 'sequelize';
 import sequelize from '../configs/sequelize';
 
-export default class Category extends Model {
+export default class Category extends Model<
+  InferAttributes<Category>,
+  InferCreationAttributes<Category>
+> {
   declare id: number;
   declare name: string;
 }
