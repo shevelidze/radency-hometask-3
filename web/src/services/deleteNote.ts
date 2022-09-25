@@ -3,7 +3,7 @@ import { object, number } from 'yup';
 import { WebApiError } from '../helpers/errors';
 import Note from '../repositories/Note';
 
-export const deleteNoteParamsSchema = object({
+export const noteDeletionParamsSchema = object({
   id: number().required(),
 }).noUnknown();
 

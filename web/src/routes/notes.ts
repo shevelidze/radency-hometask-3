@@ -1,9 +1,9 @@
 import { Router, json } from 'express';
 import createNote, { notesCreationBodySchema } from '../services/createNote';
-import deleteNote, { deleteNoteParamsSchema } from '../services/deleteNote';
+import deleteNote, { noteDeletionParamsSchema } from '../services/deleteNote';
 import editNote, { notesEditionBodySchema } from '../services/editNote';
 import getNotes from '../services/getNotes';
-import getNote, { getNoteParamsSchema } from '../services/getNote';
+import getNote, { noteGettingParamsSchema } from '../services/getNote';
 import getStatistics from '../services/getStatistics';
 import generateValidationMiddleware from '../services/validationMiddleware';
 
@@ -20,7 +20,7 @@ notesRouter.post(
 );
 notesRouter.delete(
   '/:id',
-  generateValidationMiddleware({ paramsSchema: deleteNoteParamsSchema }),
+  generateValidationMiddleware({ paramsSchema: noteDeletionParamsSchema }),
   deleteNote
 );
 notesRouter.patch(
@@ -31,7 +31,7 @@ notesRouter.patch(
 );
 notesRouter.get(
   '/:id',
-  generateValidationMiddleware({ paramsSchema: getNoteParamsSchema }),
+  generateValidationMiddleware({ paramsSchema: noteGettingParamsSchema }),
   getNote
 );
 

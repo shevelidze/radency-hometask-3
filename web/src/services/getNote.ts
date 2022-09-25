@@ -4,7 +4,7 @@ import Note from '../repositories/Note';
 import Category from '../repositories/Category';
 import { WebApiError } from '../helpers/errors';
 
-export const getNoteParamsSchema = object({
+export const noteGettingParamsSchema = object({
   id: number().required(),
 }).noUnknown();
 
