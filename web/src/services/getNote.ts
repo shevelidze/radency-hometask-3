@@ -8,7 +8,7 @@ export const getNoteParamsSchema = object({
   id: number().required(),
 }).noUnknown();
 
-const getNote: RequestHandler = async (req, res, next) => {
+const getNote: RequestHandler<{ id: string }> = async (req, res, next) => {
   const note = await Note.findByPk(req.params.id, {
     attributes: { exclude: ['categoryId'] },
     include: Category,
