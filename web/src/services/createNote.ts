@@ -1,6 +1,5 @@
 import { RequestHandler } from 'express';
 import { object, string, number } from 'yup';
-import { ForeignKeyConstraintError } from 'sequelize';
 import Note from '../repositories/Note';
 import Category from '../repositories/Category';
 import { InvalidCategoryIdError } from '../helpers/errors';
