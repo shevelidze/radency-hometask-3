@@ -9,15 +9,12 @@ import type {
 import sequelize from '../configs/sequelize';
 import Category from './Category';
 
-export default class Note extends Model<
-  InferAttributes<Note>,
-  InferCreationAttributes<Note>
-> {
+export default class Note extends Model<InferAttributes<Note>, InferCreationAttributes<Note>> {
   declare id: CreationOptional<number>;
   declare name: string;
   declare content: string;
   declare categoryId: ForeignKey<Category['id']>;
-  declare isArchived: boolean;
+  declare isArchived: CreationOptional<boolean>;
   declare createdAt: NonAttribute<Date>;
 }
 
