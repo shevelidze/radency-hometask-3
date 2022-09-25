@@ -14,7 +14,7 @@ export default function generateValidationMiddleware({
         req.body = bodySchema.validateSync(req.body, { stripUnknown: false });
 
       if (paramsSchema !== undefined)
-        req.body = paramsSchema.validateSync(req.params, {
+        paramsSchema.validateSync(req.params, {
           stripUnknown: false,
         });
 

@@ -16,9 +16,7 @@ const createNote: RequestHandler<
   any,
   { name: string; content: string; categoryId: number }
 > = async (req, res, next) => {
-  const category = await Category.findByPk(req.body.categoryId, {
-    attributes: { include: [] },
-  });
+  const category = await Category.findByPk(req.body.categoryId);
 
   if (category === null) {
     next(new InvalidCategoryIdError());
