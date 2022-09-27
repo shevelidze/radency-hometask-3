@@ -1,14 +1,16 @@
 import { Router, json } from 'express';
-import createNote, { notesCreationBodySchema } from '../services/createNote';
-import deleteNote, { noteDeletionParamsSchema } from '../services/deleteNote';
+import createNote, { notesCreationBodySchema } from '../controllers/createNote';
+import deleteNote, {
+  noteDeletionParamsSchema,
+} from '../controllers/deleteNote';
 import editNote, {
   noteEditionBodySchema,
   noteEditionParamsSchema,
-} from '../services/editNote';
-import getNotes from '../services/getNotes';
-import getNote, { noteGettingParamsSchema } from '../services/getNote';
-import getStatistics from '../services/getStatistics';
-import generateValidationMiddleware from '../services/validationMiddleware';
+} from '../controllers/editNote';
+import getNotes from '../controllers/getNotes';
+import getNote, { noteGettingParamsSchema } from '../controllers/getNote';
+import getStatistics from '../controllers/getStatistics';
+import generateValidationMiddleware from '../controllers/validationMiddleware';
 
 const notesRouter = Router();
 

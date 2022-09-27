@@ -1,7 +1,7 @@
 import express from 'express';
 import serverConfig from './configs/server';
 import notesRouter from './routes/notes';
-import errorMiddleware from './services/errorMiddleware';
+import errorMiddleware from './controllers/errorMiddleware';
 
 const app = express();
 
