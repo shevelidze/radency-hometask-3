@@ -4,8 +4,12 @@ services:
     build: ./web
     ports:
       - "8000:8000"
+    restart: always
+    links:
+      - "postgres:postgres"
   postgres:
     build: ./postgres
     ports:
       - "5432:5432"
+    restart: always
 
