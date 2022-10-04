@@ -11,6 +11,7 @@ import { Note } from './note.model';
 @Table({
   modelName: 'category',
   underscored: true,
+  timestamps: false,
 })
 export class Category extends Model {
   @AutoIncrement

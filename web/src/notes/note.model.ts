@@ -6,12 +6,14 @@ import {
   AutoIncrement,
   CreatedAt,
   BelongsTo,
+  ForeignKey,
 } from 'sequelize-typescript';
 import { Category } from './category.model';
 
 @Table({
   modelName: 'note',
   underscored: true,
+  updatedAt: false,
 })
 export class Note extends Model {
   @AutoIncrement
@@ -28,4 +30,6 @@ export class Note extends Model {
   createdAt: Date;
   @BelongsTo(() => Category)
   category: Category;
+  @ForeignKey(() => Category)
+  categoryId: number;
 }
